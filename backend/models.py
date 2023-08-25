@@ -12,9 +12,9 @@ class Answer(Base):
     quest = Column(String(255), nullable=False)
     swift_air_speed = Column(Integer, nullable=False)
     may_pass = Column(Boolean, default=False)
-    # createdAt = Column(TIMESTAMP(timezone=True),
-    #     nullable=False, server_default=func.now())
-    # updatedAt = Column(TIMESTAMP(timezone=True),
-    #     default=None, onupdate=func.now())
+    createdAt = Column(TIMESTAMP(timezone=True),
+        nullable=False, server_default=func.now())
+    updatedAt = Column(TIMESTAMP(timezone=True),
+        default=None, onupdate=func.now())
     def __repr__(self):
         return f"<Task title={self.title} status={self.status}>"
