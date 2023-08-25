@@ -7,8 +7,9 @@ virtualenv env
 source env/bin/activate
 ```
 
-install with 
+install python dependencies with 
 
 ```bash
 pip install -r requirements.txt
 ```
+
