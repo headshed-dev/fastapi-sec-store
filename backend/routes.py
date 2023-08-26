@@ -52,3 +52,13 @@ async def update_answer(answer_id: int, answer: AnswerBaseSchema):
     db.commit()
     db.refresh(db_answer)
     return db_answer
+
+@router.delete('/answers/{answer_id}',
+    status_code=STATUS.HTTP_204_NO_CONTENT)
+async def delete_answer(answer_id: int):
+    db_answer = db.query(models.Answer).filter(models.Answer.id == answer_id).first()
+    if not db_answer:
+        raise HTTPException(status_code=STATUS.HTTP_404_NOT_FOUND, detail="Answer not found")
+    db.delete(db_answer)
+    db.commit()
+    return {"message": "Answer deleted successfully"}
