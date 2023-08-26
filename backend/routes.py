@@ -26,6 +26,15 @@ async def get_all_answers():
     answers = db.query(models.Answer).all() 
     return answers
 
+@router.get('/answers/{answer_id}',
+    response_model=AnswerSchema,
+    status_code=STATUS.HTTP_200_OK)
+async def get_answer(answer_id: int):
+    db_answer = db.query(models.Answer).filter(models.Answer.id == answer_id).first()
+    if not db_answer:
+        raise HTTPException(status_code=STATUS.HTTP_404_NOT_FOUND, detail="Answer not found")
+    return db_answer
+
 @router.post('/answers',
     response_model=AnswerBaseSchema,
     status_code=STATUS.HTTP_201_CREATED)
