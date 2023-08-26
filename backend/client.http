@@ -2,11 +2,20 @@ GET http://127.0.0.1:8000/api/v1/healthchecker HTTP/1.1
 
 ###
 
-# POST https://example.com/comments HTTP/1.1
-# content-type: application/json
+GET http://127.0.0.1:8000/api/v1/answers HTTP/1.1
 
-# {
-#     "name": "sample",
-#     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
-# }
+###
+
+POST http://127.0.0.1:8000/api/v1/answers HTTP/1.1
+content-type: application/json
+
+{
+  "id": "d1b75568-4407-11ee-a141-00155d320fc5",
+  "name": "string",
+  "color": "string",
+  "quest": "string",
+  "swift_air_speed": 0,
+  "may_pass": true
+}
+
 

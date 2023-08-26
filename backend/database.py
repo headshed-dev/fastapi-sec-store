@@ -4,4 +4,11 @@ from sqlalchemy.orm import sessionmaker
 
 engine = create_engine("sqlite:///local_data.db")
 Base = declarative_base()
-SessionLocal = sessionmaker(bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
