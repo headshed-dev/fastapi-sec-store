@@ -4,7 +4,6 @@ from pydantic import BaseModel
 import uuid
 
 class AnswerBaseSchema(BaseModel):
-    id: uuid.UUID  
     name: str
     color: str
     quest: str
@@ -17,3 +16,10 @@ class AnswerBaseSchema(BaseModel):
         orm_mode = True
         allow_population_by_field_name = True
         arbitrary_types_allowed  = True
+        
+
+class AnswerSchema(AnswerBaseSchema):
+    id: int
+
+    class Config:
+        orm_mode = True

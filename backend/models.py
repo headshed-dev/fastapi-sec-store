@@ -6,7 +6,7 @@ from fastapi_utils.guid_type import GUID, GUID_DEFAULT_SQLITE
 
 class Answer(Base):
     __tablename__='form_answers'
-    id = Column(GUID, primary_key=True, default=GUID_DEFAULT_SQLITE)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(255), nullable=False)
     color = Column(String(255), nullable=False)
     quest = Column(String(255), nullable=False)
